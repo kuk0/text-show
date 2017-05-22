@@ -25,7 +25,7 @@ import qualified Data.Text as TL
 import           Data.Text.Encoding (Decoding)
 #endif
 import           Data.Text.Encoding.Error (UnicodeException)
-import           Data.Text.Foreign (I16)
+import           Data.Text.Foreign (I8)
 #if MIN_VERSION_text(1,1,0)
 import           Data.Text.Internal.Fusion.Size (Size)
 #endif
@@ -42,8 +42,8 @@ spec = parallel $ do
         prop "TextShow instance" (prop_matchesTextShow :: Int -> TS.Text -> Bool)
     describe "lazy Text" $
         prop "TextShow instance" (prop_matchesTextShow :: Int -> TL.Text -> Bool)
-    describe "I16" $
-        prop "TextShow instance" (prop_matchesTextShow :: Int -> I16 -> Bool)
+    describe "I8" $
+        prop "TextShow instance" (prop_matchesTextShow :: Int -> I8 -> Bool)
     describe "UnicodeException" $
         prop "TextShow instance" (prop_matchesTextShow :: Int -> UnicodeException -> Bool)
 #if MIN_VERSION_text(1,0,0)

@@ -15,7 +15,7 @@ Portability: GHC
 module Instances.Data.Text () where
 
 import Data.Text.Encoding.Error (UnicodeException(..))
-import Data.Text.Foreign (I16)
+import Data.Text.Foreign (I8)
 import Data.Text.Lazy.Builder (Builder, fromString)
 
 #if MIN_VERSION_text(1,0,0)
@@ -37,7 +37,7 @@ import Test.QuickCheck.Instances ()
 instance Arbitrary Builder where
     arbitrary = fromString <$> arbitrary
 
-instance Arbitrary I16 where
+instance Arbitrary I8 where
     arbitrary = arbitraryBoundedEnum
 
 instance Arbitrary UnicodeException where

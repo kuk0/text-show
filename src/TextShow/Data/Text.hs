@@ -21,7 +21,7 @@ module TextShow.Data.Text (
       showbText
     , showbTextLazy
     , showbBuilder
-    , showbI16Prec
+    , showbI8Prec
     , showbUnicodeException
 #if MIN_VERSION_text(1,0,0)
     , showbDecodingPrec
@@ -34,7 +34,7 @@ module TextShow.Data.Text (
 import           Data.Monoid.Compat ((<>))
 import qualified Data.Text as TS
 import           Data.Text.Encoding.Error (UnicodeException(..))
-import           Data.Text.Foreign (I16)
+import           Data.Text.Foreign (I8)
 import qualified Data.Text.Lazy as TL
 import           Data.Text.Lazy.Builder (Builder, fromString, toLazyText)
 
@@ -83,12 +83,12 @@ showbBuilder :: Builder -> Builder
 showbBuilder = showbTextLazy . toLazyText
 {-# INLINE showbBuilder #-}
 
--- | Convert an 'I16' value to a 'Builder' with the given precedence.
+-- | Convert an 'I8' value to a 'Builder' with the given precedence.
 --
 -- /Since: 2/
-showbI16Prec :: Int -> I16 -> Builder
-showbI16Prec = showbPrec
-{-# INLINE showbI16Prec #-}
+showbI8Prec :: Int -> I8 -> Builder
+showbI8Prec = showbPrec
+{-# INLINE showbI8Prec #-}
 
 -- | Convert a 'UnicodeException' to a 'Builder'.
 --
@@ -138,7 +138,7 @@ instance TextShow Builder where
     showb = showbBuilder
     INLINE_INST_FUN(showb)
 
-$(deriveTextShow ''I16)
+$(deriveTextShow ''I8)
 
 instance TextShow UnicodeException where
     showb = showbUnicodeException
